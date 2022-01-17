@@ -1,6 +1,6 @@
-import { CustomError } from "../../../utils/customError";
+import { CustomError } from "../../../utils/error/customError.js";
 
-export const Errors = {
+export const AuthenticationErrors = {
   EMAIL_IN_USE: {
     type: CustomError.type.APP_NAME,
     code: "EMAIL_IN_USE",

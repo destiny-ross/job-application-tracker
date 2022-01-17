@@ -2,11 +2,14 @@ import "dotenv/config";
 import https from "https";
 import fs from "fs";
 import express from "express";
+import cookieSession from "cookie-session";
+
 import morgan from "morgan";
 import config from "./config.js";
 import { errorHandler } from "./middleware/errorHandler.js";
 import documentationMiddleware from "./documentation.js";
 import authRouter from "./api/v1/auth/routes.js";
+import connect from "./middleware/db.js";
 
 // config object key destructuring
 const { PORT } = config;
@@ -16,6 +19,14 @@ const app = express();
 // global middleware
 app.use(express.json());
 app.use(morgan("dev"));
+app.use(
+  cookieSession({
+    signed: false,
+    secure: process.env.NODE_ENV !== "test",
+  })
+);
+
+connect(app);
 
 documentationMiddleware(app);
 
