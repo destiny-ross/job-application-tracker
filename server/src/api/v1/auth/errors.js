@@ -13,4 +13,10 @@ export const AuthenticationErrors = {
     message: "The given password is easy to guess, provide strong password",
     statusCode: 400,
   },
+  LOGIN_INVALID: {
+    type: CustomError.type.APP_NAME,
+    code: "LOGIN_INVALID",
+    message: "Login credentials are invalid.",
+    statusCode: 403,
+  },
 };

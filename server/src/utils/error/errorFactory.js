@@ -10,7 +10,6 @@ export function createError(error, overrides) {
     const yupError = mapYupValidationError(error);
     return new CustomError(yupError, overrides);
   }
-  console.log("here", error);
   return new CustomError(error, overrides);
 }
 

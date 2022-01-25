@@ -4,7 +4,7 @@
 import { Router } from "express";
 import { CustomError } from "../../../utils/error/customError.js";
 import { ErrorTypes } from "../../../utils/error/errorTypes.js";
-import { signup } from "./controller.js";
+import { signin, signup } from "./controller.js";
 import { validateSignup } from "./validation.js";
 const authRouter = Router();
 
@@ -28,9 +28,7 @@ authRouter.post("/signup", validateSignup, signup);
  *       200:
  *         description: returns user object after storing successfully in db
  */
-authRouter.route("/signin").post((req, res) => {
-  res.send("...signing in...");
-});
+authRouter.post("/signin", signin);
 
 /**
  * @swagger

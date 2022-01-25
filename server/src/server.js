@@ -2,49 +2,36 @@ import "dotenv/config";
 import https from "https";
 import fs from "fs";
 import express from "express";
-import cookieSession from "cookie-session";
-
-import morgan from "morgan";
 import config from "./config.js";
 import { errorHandler } from "./middleware/errorHandler.js";
 import documentationMiddleware from "./documentation.js";
 import authRouter from "./api/v1/auth/routes.js";
 import connect from "./middleware/db.js";
+import cookieSession from "cookie-session";
+import morgan from "morgan";
+import { globalMiddleware } from "./middleware/globals.js";
+import { ErrorTypes } from "./utils/error/errorTypes.js";
+import { CustomError } from "./utils/error/customError.js";
 
 // config object key destructuring
 const { PORT } = config;
 
 const app = express();
 
-// global middleware
-app.use(express.json());
-app.use(morgan("dev"));
-app.use(
-  cookieSession({
-    signed: false,
-    secure: process.env.NODE_ENV !== "test",
-  })
-);
-
-connect(app);
-
+globalMiddleware(app);
 documentationMiddleware(app);
 
 // routes
-
-app.use("/test", (req, res) => {
-  res.send("test successful");
-});
-
 app.use("/api/v1/auth", authRouter);
 
-app.use("*", (req, res) => {
-  res.send({});
+app.use("*", (req, res, next) => {
+  return next(new CustomError(ErrorTypes.RESOURCE_NOT_FOUND));
 });
 
 app.use(errorHandler);
 
-const start = () => {
+const start = async () => {
+  await connect(app);
   https
     .createServer(
       {
@@ -53,8 +40,8 @@ const start = () => {
       },
       app
     )
-    .listen(3000, function () {
-      console.log("Server listening on https://localhost:3000/");
+    .listen(PORT, function () {
+      console.log(`Server listening on https://localhost:${PORT}`);
     });
 };
 

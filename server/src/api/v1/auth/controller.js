@@ -43,8 +43,33 @@ export const signup = async (req, res, next) => {
   }
 };
 
-export const signin = (_req, res) => {
-  sendResponse(res, {}, 200);
+export const signin = async (req, res, next) => {
+  const db = req.app.get("db");
+  const { email, password } = req.body;
+
+  try {
+    const user = await db("users").where({ email }).first();
+    if (!user) {
+      return next(new CustomError(AuthenticationErrors.LOGIN_INVALID));
+    }
+
+    const passwordIsValid = await argon2.verify(user.hash, password);
+    if (!passwordIsValid) {
+      return next(new CustomError(AuthenticationErrors.LOGIN_INVALID));
+    }
+
+    delete user.hash;
+
+    const token = jwt.sign({ ...user }, process.env.JWT_KEY);
+
+    req.session = {
+      jwt: token,
+    };
+
+    sendResponse(res, user, 200);
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 export const signout = (_req, res) => {

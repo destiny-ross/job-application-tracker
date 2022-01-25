@@ -10,6 +10,7 @@ const db = Knex({
 
 const connect = (app) => {
   app.set("db", db);
+  console.log("Connected to PostgreSQL db");
 };
 
 export default connect;
