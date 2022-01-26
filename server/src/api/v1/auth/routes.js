@@ -4,7 +4,7 @@
 import { Router } from "express";
 import { CustomError } from "../../../utils/error/customError.js";
 import { ErrorTypes } from "../../../utils/error/errorTypes.js";
-import { signin, signup } from "./controller.js";
+import { signin, signout, signup } from "./controller.js";
 import { validateSignup } from "./validation.js";
 const authRouter = Router();
 
@@ -39,9 +39,7 @@ authRouter.post("/signin", signin);
  *       200:
  *         description: signs out user
  */
-authRouter.route("/signout").delete((req, res) => {
-  res.send("...signing out...");
-});
+authRouter.delete("/signout", signout);
 
 /**
  * @openapi

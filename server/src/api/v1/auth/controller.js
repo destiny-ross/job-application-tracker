@@ -72,7 +72,8 @@ export const signin = async (req, res, next) => {
   }
 };
 
-export const signout = (_req, res) => {
+export const signout = (req, res) => {
+  req.session = null;
   sendResponse(res, {}, 200);
 };
 
