@@ -77,6 +77,7 @@ export const signout = (req, res) => {
   sendResponse(res, {}, 200);
 };
 
-export const me = (_req, res) => {
-  sendResponse(res, {}, 200);
+export const me = (req, res) => {
+  console.log("me hit");
+  sendResponse(res, req.currentUser, 200);
 };

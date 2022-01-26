@@ -5,7 +5,6 @@ export function formatError(error, overrides = {}) {
   const newError = JSON.parse(JSON.stringify(error));
 
   // No need to send to client
-  newError.statusCode = undefined;
   delete newError.meta;
 
   return {

@@ -2,9 +2,10 @@
 // Operations performed in adjacent controller files
 
 import { Router } from "express";
+import { requireAuth } from "../../../middleware/requireAuth.js";
 import { CustomError } from "../../../utils/error/customError.js";
 import { ErrorTypes } from "../../../utils/error/errorTypes.js";
-import { signin, signout, signup } from "./controller.js";
+import { me, signin, signout, signup } from "./controller.js";
 import { validateSignup } from "./validation.js";
 const authRouter = Router();
 
@@ -50,8 +51,6 @@ authRouter.delete("/signout", signout);
  *       200:
  *         description: returns user logged in.
  */
-authRouter.route("/me").get((req, res) => {
-  res.send("me");
-});
+authRouter.get("/me", requireAuth, me);
 
 export default authRouter;

@@ -10,6 +10,7 @@ export function formatResponse(result, override = {}) {
 }
 
 export function sendResponse(res, payload, statusCode = 200, context = {}) {
+  console.log(payload);
   if (payload instanceof CustomError) {
     const code = payload.statusCode || 500;
     return res.status(code).json(formatError(payload));

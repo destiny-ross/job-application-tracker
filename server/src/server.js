@@ -12,6 +12,7 @@ import morgan from "morgan";
 import { globalMiddleware } from "./middleware/globals.js";
 import { ErrorTypes } from "./utils/error/errorTypes.js";
 import { CustomError } from "./utils/error/customError.js";
+import { requireAuth } from "./middleware/requireAuth.js";
 
 // config object key destructuring
 const { PORT } = config;
@@ -23,6 +24,9 @@ documentationMiddleware(app);
 
 // routes
 app.use("/api/v1/auth", authRouter);
+app.get("/test", requireAuth, (req, res) => {
+  res.send({ msg: "User is authed" });
+});
 
 app.use("*", (req, res, next) => {
   return next(new CustomError(ErrorTypes.RESOURCE_NOT_FOUND));
