@@ -6,7 +6,7 @@ import { requireAuth } from "../../../middleware/requireAuth.js";
 import { CustomError } from "../../../utils/error/customError.js";
 import { ErrorTypes } from "../../../utils/error/errorTypes.js";
 import { me, signin, signout, signup } from "./controller.js";
-import { validateSignup } from "./validation.js";
+import { validateSignin, validateSignup } from "./validation.js";
 const authRouter = Router();
 
 /**
@@ -29,7 +29,7 @@ authRouter.post("/signup", validateSignup, signup);
  *       200:
  *         description: returns user object after storing successfully in db
  */
-authRouter.post("/signin", signin);
+authRouter.post("/signin", validateSignin, signin);
 
 /**
  * @swagger

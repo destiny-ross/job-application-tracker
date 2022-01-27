@@ -24,3 +24,18 @@ export async function validateSignup(req, _res, next) {
   }
   next();
 }
+
+const signinSchema = () => {
+  return Yup.object().shape({
+    email: Yup.string().email("Invalid email provided").required(),
+    password: Yup.string().required(),
+  });
+};
+
+export async function validateSignin(req, _res, next) {
+  try {
+    await signinSchema().validate(req.body, { abortEarly: false });
+  } catch (err) {
+    return next(createError(err));
+  }
+}
