@@ -1,4 +1,4 @@
 .Page {
   flex: 1;
-  height: 100vh;
+  height: calc(100vh - 90px);
 }

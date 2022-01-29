@@ -9,7 +9,7 @@
 
 .NavBar-header {
   background: var(--main-bg-color);
-  filter: brightness(85%);
+
   width: 90px;
 }
 

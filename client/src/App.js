@@ -7,10 +7,12 @@ import Navigation from "./components/Navigation";
 import Tray from "./components/Tray";
 import Page from "./components/Page";
 import ProtectedRoute from "./components/ProtectedRoute";
+import DashboardPage from "./pages/dashboard";
+import LoginPage from "./pages/login";
+import ApplicationsPage from "./pages/applications";
 
 const App = () => {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
-  const user = useSelector((state) => state.auth.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -20,25 +22,33 @@ const App = () => {
   };
   return (
     <div className="App">
-      {isAuthenticated && <Header />}
-      <Navigation />
+      {isAuthenticated && (
+        <>
+          <Header />
+          <Navigation />
+        </>
+      )}
+
       <Page>
         <Routes>
           <Route
             path="/"
             element={<button onClick={handleLogin}>Login</button>}
           />
+          <Route path="/login" element={<LoginPage />} />
           <Route path="dashboard" element={<ProtectedRoute />}>
-            <Route index element={<h1>Dashboard</h1>} />
+            <Route index element={<DashboardPage />} />
+            <Route path="applications" element={<ApplicationsPage />} />
           </Route>
         </Routes>
       </Page>
-
-      <Tray>
-        <Routes>
-          <Route path="/" element={null} />
-        </Routes>
-      </Tray>
+      {isAuthenticated && (
+        <Tray>
+          <Routes>
+            <Route path="/" element={null} />
+          </Routes>
+        </Tray>
+      )}
     </div>
   );
 };

@@ -10,7 +10,6 @@ export function errorHandler(err, req, res, next) {
   console.log({ analytics });
 
   if (err instanceof CustomError) {
-    console.log(err);
     const code = err.statusCode || 500;
     return res.status(code).send(formatError(err));
   }
