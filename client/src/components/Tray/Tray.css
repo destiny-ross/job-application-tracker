@@ -1,0 +1,5 @@
+.Tray {
+  width: 690px;
+  height: 100vh;
+  background: var(--main-bg-color);
+}

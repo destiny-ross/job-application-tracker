@@ -1,0 +1,5 @@
+.Navigation {
+  width: 90px;
+  height: 100vh;
+  background: var(--main-bg-color);
+}

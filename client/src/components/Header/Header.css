@@ -1,0 +1,34 @@
+.App-header {
+  height: 90px;
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+  background: none;
+  filter: brightness(85%);
+}
+
+.NavBar-header {
+  background: var(--main-bg-color);
+  filter: brightness(85%);
+  width: 90px;
+}
+
+.Tray-header {
+  width: 690px;
+  background: var(--main-bg-color);
+  display: flex;
+  justify-content: flex-end;
+}
+
+.UserInfo {
+  padding: 15px;
+  display: flex;
+  text-align: right;
+}
+
+.UserInfo img {
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  margin-left: 15px;
+}
