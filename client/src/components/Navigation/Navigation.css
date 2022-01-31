@@ -23,6 +23,7 @@
   justify-content: center;
   margin: 10px 0;
   border: 3px solid transparent;
+  cursor: pointer;
 }
 
 .NavLink.active {

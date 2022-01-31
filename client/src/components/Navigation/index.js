@@ -6,7 +6,7 @@ import {
   faArrowRightFromBracket,
   faBuilding,
   faCog,
-  faFile,
+  faFiles,
   faHouse,
   faPenField,
 } from "@fortawesome/pro-solid-svg-icons";
@@ -23,33 +23,36 @@ const Navigation = () => {
   };
   return (
     <nav className="Navigation">
-      {" "}
       <div className="NavBar-header"></div>
-      <Link className={`NavLink`} to="dashboard" end>
+      <Link className={`NavLink`} to="dashboard" end title="Dashboard Home">
         <FontAwesomeIcon icon={faHouse} size="2x" />
       </Link>
-      <Link to="dashboard/applications" className="NavLink">
+      <Link
+        to="dashboard/applications"
+        className="NavLink"
+        title="Applications"
+      >
         <FontAwesomeIcon icon={faPenField} size="2x" />
       </Link>
-      <Link to="/dashboard/companies" className="NavLink">
+      <Link to="/dashboard/companies" className="NavLink" title="Companies">
         <FontAwesomeIcon icon={faBuilding} size="2x" />
       </Link>
-      <Link to="/dashboard/contacts" className="NavLink">
+      <Link to="/dashboard/contacts" className="NavLink" title="Contacts">
         <FontAwesomeIcon icon={faAddressBook} size="2x" />
       </Link>
-      <Link to="/dashboard/documents" className="NavLink">
-        <FontAwesomeIcon icon={faFile} size="2x" />
+      <Link to="/dashboard/documents" className="NavLink" title="Documents">
+        <FontAwesomeIcon icon={faFiles} size="2x" />
       </Link>
-      <Link to="/dashboard/settings" className="NavLink">
+      <Link to="/dashboard/settings" className="NavLink" title="Settings">
         <FontAwesomeIcon icon={faCog} size="2x" />
       </Link>
-      <ul className="NavLink">
+      <div className="NavLink">
         <FontAwesomeIcon
           onClick={handleLogout}
           icon={faArrowRightFromBracket}
           size="2x"
         />
-      </ul>
+      </div>
     </nav>
   );
 };

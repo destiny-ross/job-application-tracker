@@ -1,5 +1,9 @@
+import Page from "../../components/Page";
+
 const DocumentsPage = () => {
-  return <div>Documents</div>;
+  return (
+    <Page title="Documents" displayHeader={true} displaySubheader={true}></Page>
+  );
 };
 
 export default DocumentsPage;

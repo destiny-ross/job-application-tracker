@@ -1,0 +1,47 @@
+.Card {
+  background-color: #393939;
+  border-top: 3px solid #0075e1;
+  list-style: none;
+  filter: brightness(1.15);
+  height: 150px;
+  display: flex;
+  align-items: center;
+}
+
+.Card:hover {
+  filter: brightness(1.3);
+  /* border-top: 3px solid var(--main-bg-color); */
+}
+
+.Card img {
+  border-radius: 12px;
+  height: 70px;
+  width: 70px;
+  margin: 15px 30px;
+}
+
+.companyLogo {
+  display: flex;
+  align-items: center;
+}
+
+.jobInfoContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  padding: 15px 0;
+  height: 100px;
+  flex: 1;
+}
+
+.titleSection {
+  display: flex;
+  flex: 1;
+}
+
+.descSection {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}

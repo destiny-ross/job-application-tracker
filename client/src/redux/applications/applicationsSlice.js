@@ -4,6 +4,7 @@ export const applicationsReducer = createSlice({
   name: "applications",
   initialState: {
     applications: null,
+    count: 0,
   },
   reducers: {
     getApplications: (state, action) => {
@@ -27,6 +28,7 @@ export const applicationsReducer = createSlice({
           salaryMax: 95000,
         },
       ];
+      state.count = 2;
     },
   },
 });

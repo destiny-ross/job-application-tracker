@@ -1,5 +1,11 @@
+import Page from "../../components/Page";
+
 const DashboardPage = () => {
-  return <div>Dashboard</div>;
+  return (
+    <Page title="Dashboard Home" displayHeader={true} displaySubheader={false}>
+      Dashboard
+    </Page>
+  );
 };
 
 export default DashboardPage;
