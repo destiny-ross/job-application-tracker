@@ -26,6 +26,9 @@
   margin-top: 15px;
 }
 
+.Navigation :nth-last-child(2) {
+  margin: auto 0 10px 0;
+}
 .Navigation :last-child {
-  margin: auto 0 15px 0;
+  margin: 10px 0 15px 0;
 }

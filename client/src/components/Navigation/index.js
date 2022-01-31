@@ -5,6 +5,7 @@ import {
   faAddressBook,
   faArrowRightFromBracket,
   faBuilding,
+  faCog,
   faFile,
   faHouse,
   faPenField,
@@ -25,7 +26,7 @@ const Navigation = () => {
       <Link className={`NavLink`} to="dashboard">
         <FontAwesomeIcon icon={faHouse} size="2x" />
       </Link>
-      <Link to="/dashboard/applications" className="NavLink">
+      <Link to="dashboard/applications" className="NavLink">
         <FontAwesomeIcon icon={faPenField} size="2x" />
       </Link>
       <Link to="/dashboard/companies" className="NavLink">
@@ -36,6 +37,9 @@ const Navigation = () => {
       </Link>
       <Link to="/dashboard/documents" className="NavLink">
         <FontAwesomeIcon icon={faFile} size="2x" />
+      </Link>
+      <Link to="/dashboard/settings" className="NavLink">
+        <FontAwesomeIcon icon={faCog} size="2x" />
       </Link>
       <ul className="NavLink">
         <FontAwesomeIcon
