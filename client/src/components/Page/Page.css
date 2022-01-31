@@ -1,4 +1,52 @@
 .Page {
+  background: #393939;
   flex: 1;
-  height: calc(100vh - 90px);
+  /* padding: px; */
+  height: 100vh;
+}
+
+.Page-header {
+  /* text-align: left; */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1;
+  height: 90px;
+  width: 100%;
+  padding: 20px 30px;
+  z-index: 1;
+}
+
+.Page-header h1 {
+  text-transform: capitalize;
+  display: flex;
+  align-items: center;
+  font-weight: 800;
+}
+
+.Page-header input {
+  height: 50px;
+  width: 460px;
+  border: none;
+  border-radius: 8px 0 0 8px;
+  padding: 8px 15px;
+  font-size: 1.2em;
+}
+
+.Page-header button {
+  height: 50px;
+  width: 120px;
+  border-radius: 8px;
+  background: var(--main-bg-color);
+  border-radius: 0 8px 8px 0;
+  color: white;
+  border: none;
+  font-size: 1.2em;
+  font-weight: 800;
+}
+
+.Page-header button:active {
+  -webkit-box-shadow: inset 0px 0px 5px #c1c1c1;
+  -moz-box-shadow: inset 0px 0px 5px #c1c1c1;
+  box-shadow: inset 0px 0px 5px #c1c1c1;
 }

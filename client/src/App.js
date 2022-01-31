@@ -1,10 +1,9 @@
 import { useSelector, useDispatch } from "react-redux";
 import { login, logout } from "./redux/auth/authSlice";
 import "./App.css";
-import Header from "./components/Header";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import Navigation from "./components/Navigation";
-import Tray from "./components/Tray";
+import Drawer from "./components/Drawer";
 import Page from "./components/Page";
 import ProtectedRoute from "./components/ProtectedRoute";
 import DashboardPage from "./pages/dashboard";
@@ -15,6 +14,7 @@ const App = () => {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleLogin = () => {
     dispatch(login());
@@ -22,14 +22,17 @@ const App = () => {
   };
   return (
     <div className="App">
-      {isAuthenticated && (
-        <>
-          <Header />
-          <Navigation />
-        </>
-      )}
-
+      {isAuthenticated && <Navigation />}
       <Page>
+        {isAuthenticated && (
+          <div className="Page-header">
+            <h1>{pageDisplayTitle[location.pathname]}</h1>
+            <section>
+              <input />
+              <button>Search</button>
+            </section>
+          </div>
+        )}
         <Routes>
           <Route
             path="/"
@@ -43,14 +46,23 @@ const App = () => {
         </Routes>
       </Page>
       {isAuthenticated && (
-        <Tray>
+        <Drawer>
           <Routes>
             <Route path="/" element={null} />
           </Routes>
-        </Tray>
+        </Drawer>
       )}
     </div>
   );
 };
 
 export default App;
+
+const pageDisplayTitle = {
+  "/dashboard": "Dashboard Home",
+  "/dashboard/applications": "Applications",
+  "/dashboard/companies": "Companies",
+  "/dashboard/contacts": "Contacts",
+  "/dashboard/documents": "Documents",
+  "/dashboard/settings": "Settings",
+};

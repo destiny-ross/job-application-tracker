@@ -1,14 +1,15 @@
 import { useSelector } from "react-redux";
+import "./UserInfo.css";
 
-const UserInformation = () => {
+const UserInfo = () => {
   const user = useSelector((state) => state.auth.user);
 
   if (user !== null) {
     return (
       <div className="UserInfo">
         <div>
-          <h4>{`${user.firstName} ${user.lastName}`}</h4>
-          <h5>{user.title}</h5>
+          <h2>{`${user.firstName} ${user.lastName}`}</h2>
+          <h4>{user.title}</h4>
         </div>
         <img src={user.imgUrl} alt="" />
       </div>
@@ -16,4 +17,4 @@ const UserInformation = () => {
   } else return null;
 };
 
-export default UserInformation;
+export default UserInfo;

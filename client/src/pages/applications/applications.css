@@ -1,0 +1,49 @@
+.ApplicationsListContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 15px 30px;
+  gap: 15px;
+}
+
+.ApplicationsListContainer article {
+  background-color: #393939;
+  border-top: 3px solid #0075e1;
+  list-style: none;
+  filter: brightness(1.15);
+  height: 150px;
+  display: flex;
+  align-items: center;
+}
+
+.ApplicationsListContainer article img {
+  border-radius: 12px;
+  height: 70px;
+  width: 70px;
+  margin: 15px 30px;
+}
+
+.companyLogo {
+  display: flex;
+  align-items: center;
+}
+
+.jobInfoContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  padding: 15px 0;
+  height: 100px;
+  flex: 1;
+}
+
+.titleSection {
+  display: flex;
+  flex: 1;
+}
+
+.descSection {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}

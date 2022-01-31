@@ -23,7 +23,9 @@ const Navigation = () => {
   };
   return (
     <nav className="Navigation">
-      <Link className={`NavLink`} to="dashboard">
+      {" "}
+      <div className="NavBar-header"></div>
+      <Link className={`NavLink`} to="dashboard" end>
         <FontAwesomeIcon icon={faHouse} size="2x" />
       </Link>
       <Link to="dashboard/applications" className="NavLink">
