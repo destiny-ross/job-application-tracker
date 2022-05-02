@@ -1,9 +1,0 @@
-.PageSubheader {
-  height: 60px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 30px;
-  margin: 15px 0;
-}
