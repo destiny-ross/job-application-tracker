@@ -1,52 +1,24 @@
-import pinoLogger from "pino";
-import path from "path";
-const __dirname = path.resolve();
+import pinoms from "pino-multi-stream";
+import fs from "fs";
 
 const levels = {
-  emerg: 80,
-  alert: 70,
-  crit: 60,
   error: 50,
-  warn: 40,
-  notice: 30,
   info: 20,
   debug: 10,
 };
 
-const streams = [
-  { stream: process.stdout },
-  { level: "error", stream: process.stderr },
-  ...Object.keys(levels).map((level) => {
-    return {
-      level: level,
-      stream: pinoLogger.destination(`${__dirname}/logs/app-${level}.log`),
-    };
-  }),
+var prettyStream = pinoms.prettyStream({
+  prettyPrint: {
+    colorize: true,
+    translateTime: "SYS:standard",
+    ignore: "hostname,pid", // add 'time' to remove timestamp
+  },
+});
+var streams = [
+  { stream: fs.createWriteStream("my.log") },
+  { stream: prettyStream },
 ];
 
-export default pinoLogger(
-  {
-    level: process.env.PINO_LOG_LEVEL || "info",
-    customLevels: levels,
-    base: undefined,
-    useOnlyCustomLevels: true,
-    transport: {
-      target: "pino-pretty",
-      options: {
-        colorize: true, // colorizes the log
-        levelFirst: true,
-        translateTime: "yyyy-dd-mm, h:MM:ss TT",
-      },
-    },
-    formatters: {
-      level: (label) => {
-        return { level: label };
-      },
-    },
-  },
+const logger = pinoms(pinoms.multistream(streams));
 
-  pinoLogger.multistream(streams, {
-    levels,
-    dedupe: true,
-  })
-);
+export default logger;

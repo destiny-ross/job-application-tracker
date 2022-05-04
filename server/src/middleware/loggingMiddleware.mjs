@@ -3,7 +3,7 @@ import logger from "../logger.mjs";
 
 const loggingMiddleware = expressPinoLogger({
   logger: logger,
-  autoLogging: false,
+  autoLogging: true,
 });
 
 export default loggingMiddleware;

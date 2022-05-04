@@ -6,8 +6,8 @@
   "type": "module",
   "scripts": {
     "start": "nodemon index.js | pino-pretty",
-    "dev": "npm run clean && npm run start",
-    "clean": "del logs/**"
+    "dev": "npm run start",
+    "clean": "del logs/my.log"
   },
   "keywords": [],
   "author": "",
@@ -18,7 +18,9 @@
     "express": "^4.18.1",
     "express-pino-logger": "^7.0.0",
     "helmet": "^5.0.2",
-    "pino": "^7.11.0"
+    "pino": "^7.11.0",
+    "pino-multi-stream": "^6.0.0",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "del-cli": "^4.0.1",
