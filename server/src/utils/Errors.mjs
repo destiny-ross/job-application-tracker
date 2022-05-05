@@ -1,6 +1,15 @@
 import { ApplicationError } from "./ApplicationError.mjs";
 
-const HTTPError = {
+export const CustomError = {
+  UNKNOWN_ERROR: {
+    type: ApplicationError.type.APPLICATION,
+    code: "UNKNOWN_ERROR",
+    message: "Unknown error",
+    statusCode: 500,
+  },
+};
+
+export const HTTPError = {
   // Predefined 4xx http errors
   BAD_REQUEST: {
     type: ApplicationError.type.NETWORK,
@@ -59,5 +68,3 @@ const HTTPError = {
     statusCode: 504,
   },
 };
-
-export default HTTPError;

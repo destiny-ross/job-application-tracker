@@ -2,6 +2,7 @@ import { sendResponse, formatError } from "../utils/sendResponse.mjs";
 import { ApplicationError } from "../utils/ApplicationError.mjs";
 import { createError } from "../utils/ErrorFactory.mjs";
 import logger from "../logger.mjs";
+import { CustomError } from "../utils/Errors.mjs";
 
 const errorHandlerMiddleware = (err, req, res, next) => {
   logger.error(err);
@@ -20,7 +21,7 @@ const errorHandlerMiddleware = (err, req, res, next) => {
     return res.status(code).json(formatError(newError));
   }
 
-  const unknownError = new ApplicationError(HTTPEr);
+  const unknownError = new ApplicationError(CustomError);
 
   return sendResponse(res, unknownError, statusCode);
 };

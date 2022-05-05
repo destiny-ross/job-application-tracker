@@ -6,7 +6,7 @@ import loggingMiddleware from "./middleware/loggingMiddleware.mjs";
 import logger from "./logger.mjs";
 import errorHandlerMiddleware from "./middleware/errorHandlerMiddleware.mjs";
 import { ApplicationError } from "./utils/ApplicationError.mjs";
-import HTTPError from "./utils/Errors.mjs";
+import { HTTPError } from "./utils/Errors.mjs";
 
 const PORT = 4000;
 const app = express();
